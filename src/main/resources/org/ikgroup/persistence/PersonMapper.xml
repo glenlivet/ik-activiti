@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ikgroup.persistence.PersonMapper">
+	
+	<resultMap id="personResultMap" type="Person">
+		<id property="id" column="id" />
+		<result property="username" column="username" />
+		<result property="firstName" column="first_name" />
+		<result property="lastName" column="last_name" />
+		<result property="birthDate" column="birth_day" />
+	</resultMap>
+	
+	<sql id="columns">
+		id, username, first_name, last_name, birth_day 
+	</sql>
+	
+	<select id="findAll" resultMap="personResultMap">
+		select <include refid="columns" />
+		from activiti.ik_person
+	</select>
+	
+	<select id="findByUsername" resultMap="personResultMap" parameterType="map">
+		select <include refid="columns" /> 
+		from activiti.ik_person 
+		where username = #{username}
+	</select>
+	
+	<insert id="add" parameterType="Person"  useGeneratedKeys="true"
+        keyProperty="id">
+    	insert into activiti.ik_person 
+    	(username, first_name, last_name, birth_day) 
+    	values 
+    	(
+    	#{username},
+    	#{firstName},
+    	#{lastName},
+    	#{birthDate}
+    	)
+    </insert>
+
+</mapper>

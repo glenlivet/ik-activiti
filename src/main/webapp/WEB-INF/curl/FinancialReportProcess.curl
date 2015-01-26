@@ -1,0 +1,7 @@
+curl -H 'Content-Type: application/json' -d '{"taskId": "25004","user":"kikyou"}' http://localhost:9090/financialReport/claim
+
+curl -d '' http://localhost:9090/financialReport/complete?taskId=25004
+
+curl http://localhost:9090/financialReport/grouptasks?group=management
+
+curl -H 'Content-Type: application/json' -d '{"taskId": "25008","user":"ita"}' http://localhost:9090/financialReport/claim
