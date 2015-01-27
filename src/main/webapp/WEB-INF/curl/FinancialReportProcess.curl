@@ -5,3 +5,9 @@ curl -d '' http://localhost:9090/financialReport/complete?taskId=25004
 curl http://localhost:9090/financialReport/grouptasks?group=management
 
 curl -H 'Content-Type: application/json' -d '{"taskId": "25008","user":"ita"}' http://localhost:9090/financialReport/claim
+
+curl -H 'Content-Type: application/json' -d '{"message": "newStartMsg","assignee":"kikyou"}' http://localhost:9090/msgStart/process
+
+curl http://localhost:9090/msgStart/procDef?msgName=newStartMsg
+
+curl http://localhost:9090/onetask/tasks?assignee=kikyou

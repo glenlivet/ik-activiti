@@ -39,7 +39,7 @@ public class FinancialReportProcessRestController {
 		service.completeTask(taskId);
 	}
 	
-	@RequestMapping(value = "/grouptasks", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/groupTasks", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public List<TaskRepresentation> getGroupTasks(@RequestParam String group){
 		List<Task> tasks = service.getGroupTasks(group);
