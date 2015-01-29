@@ -6,6 +6,7 @@ import java.util.Map;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.repository.ProcessDefinition;
+import org.activiti.engine.runtime.ProcessInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -44,7 +45,7 @@ public class MsgStartProcessRestController {
 	public void startProcess(@RequestBody StartProcessRepresentation startProcessRepresentation) {
 		Map<String, Object> variables = new HashMap<String, Object>();
 		variables.put("person", startProcessRepresentation.getAssignee());
-		runtimeService.startProcessInstanceByMessage(startProcessRepresentation.getMessage(), variables);
+		ProcessInstance pi = runtimeService.startProcessInstanceByMessage(startProcessRepresentation.getMessage(), variables);
 	}
 	
 	static class ProcessDefRepresentation {

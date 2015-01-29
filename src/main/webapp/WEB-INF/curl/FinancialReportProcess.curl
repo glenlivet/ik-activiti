@@ -2,7 +2,7 @@ curl -H 'Content-Type: application/json' -d '{"taskId": "25004","user":"kikyou"}
 
 curl -d '' http://localhost:9090/financialReport/complete?taskId=25004
 
-curl http://localhost:9090/financialReport/grouptasks?group=management
+curl http://localhost:9090/financialReport/groupTasks?group=management
 
 curl -H 'Content-Type: application/json' -d '{"taskId": "25008","user":"ita"}' http://localhost:9090/financialReport/claim
 
@@ -11,3 +11,11 @@ curl -H 'Content-Type: application/json' -d '{"message": "newStartMsg","assignee
 curl http://localhost:9090/msgStart/procDef?msgName=newStartMsg
 
 curl http://localhost:9090/onetask/tasks?assignee=kikyou
+
+curl http://localhost:9090/event/process -d ''
+
+curl http://localhost:9090/event/signal -d ''
+
+curl http://localhost:9090/event/procInsts?procDefKey=catchSignal
+
+curl http://localhost:9090/event/procInsts?execJob=35022 -d ''
