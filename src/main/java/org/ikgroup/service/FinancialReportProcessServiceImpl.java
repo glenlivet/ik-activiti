@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
+import org.activiti.engine.runtime.ProcessInstance;
+import org.activiti.engine.task.IdentityLinkType;
 import org.activiti.engine.task.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +24,9 @@ public class FinancialReportProcessServiceImpl implements
 
 	@Override
 	public void startProcess() {
-		runtimeService.startProcessInstanceByKey("financialReport");
+		ProcessInstance pi = runtimeService.startProcessInstanceByKey("financialReport");
+		runtimeService.addUserIdentityLink(pi.getId(), "admin", IdentityLinkType.STARTER);
+		
 	}
 
 	@Override

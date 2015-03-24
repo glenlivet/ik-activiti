@@ -13,4 +13,14 @@ activiti study
 暂时考虑的实现方式为:<p>
 因为沟通人数不定，抽象为每向一个人沟通为一个子流程，可以并发多个子流程来达到向多人沟通的目的。
 
+## 关于会签 
+可以考虑用Multi-instance来实现。以下为示例代码:
+```xml
+<userTask id="miTasks" name="My Task" activiti:assignee="${assignee}">
+  <multiInstanceLoopCharacteristics isSequential="false"
+     activiti:collection="assigneeList" activiti:elementVariable="assignee" >
+    <completionCondition>${nrOfCompletedInstances/nrOfInstances >= 0.6 }</completionCondition>
+  </multiInstanceLoopCharacteristics>
+</userTask>
+```
 
