@@ -44,3 +44,7 @@ activiti study
 </userTask>
 ```
 
+## 关于发起人的设置
+* 用aop实现
+* 在系统发起一个流程时拦截，调用获取发起人的实现，将发起人以`runtimeService.addUserIdentityLink`的方式注入流程引擎。
+
