@@ -2,8 +2,10 @@ package org.ikgroup.service;
 
 import java.util.List;
 
+import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
+import org.activiti.engine.repository.Model;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.IdentityLinkType;
 import org.activiti.engine.task.Task;
@@ -18,7 +20,7 @@ public class FinancialReportProcessServiceImpl implements
 	
 	@Autowired
 	private RuntimeService runtimeService;
-
+	
 	@Autowired
 	private TaskService taskService;
 
@@ -26,7 +28,7 @@ public class FinancialReportProcessServiceImpl implements
 	public void startProcess() {
 		ProcessInstance pi = runtimeService.startProcessInstanceByKey("financialReport");
 		runtimeService.addUserIdentityLink(pi.getId(), "admin", IdentityLinkType.STARTER);
-		
+		runtimeService.suspendProcessInstanceById(null);
 	}
 
 	@Override

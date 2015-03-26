@@ -1,4 +1,4 @@
-package org.ikgroup.service.activity.behavior;
+package org.ikgroup.service.activiti.behavior;
 
 import org.activiti.engine.impl.pvm.delegate.ActivityBehavior;
 import org.activiti.engine.impl.pvm.delegate.ActivityExecution;
